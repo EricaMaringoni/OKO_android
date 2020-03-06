@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<FindBugsFilter>
+    <!-- Do not check auto-generated resources classes -->
+    <Match>
+        <Class name="~.*R\$.*"/>
+    </Match>
+    <!-- Do not check auto-generated manifest classes -->
+    <Match>
+        <Class name="~.*Manifest\$.*"/>
+    </Match>
+    <!-- Do not check auto-generated Dagger classes-->
+    <Match>
+        <Class name="~.*Dagger*.*"/>
+    </Match>
+</FindBugsFilter>

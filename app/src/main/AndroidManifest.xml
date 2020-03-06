@@ -1,0 +1,46 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.Se4Med.OKO">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="OKO"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <uses-library android:name="android.test.runner"
+            android:required="false" />
+        <activity
+            android:name="com.Se4Med.OKO.Home"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name="com.Se4Med.OKO.Login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.Se4Med.OKO.AccessoDatabase" />
+        <activity android:name="com.Se4Med.OKO.Utenti" />
+        <activity android:name="com.Se4Med.OKO.Pazienti"
+            android:label="Patients"/>
+        <activity android:name="com.Se4Med.OKO.ProfiloPaziente" />
+        <activity android:name="com.Se4Med.OKO.tutorial">
+        </activity>
+        <activity android:name="com.Se4Med.OKO.TestActivity">
+        </activity>
+        <activity android:name="com.Se4Med.OKO.RisultatoTest">
+        </activity>
+        <activity android:name="com.Se4Med.OKO.AggiungiUtente">
+        </activity>
+    </application>
+</manifest>
