@@ -98,7 +98,7 @@ public class RisultatoTest extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         doc = pref.getString("DOC", null);
-        Log.d("see",doc);
+
         if (doc.compareTo("1")==0){
             startActivity(new Intent(this, Pazienti.class));
         }else{

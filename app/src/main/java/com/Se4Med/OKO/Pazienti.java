@@ -108,7 +108,6 @@ public class Pazienti extends AppCompatActivity implements View.OnClickListener 
     }
     private View.OnClickListener onClickListener= new View.OnClickListener() {
         public void onClick(View v) {
-            Log.d("url", "l'id è: " + v.getId());
 
             String[] singoli_dati = utenti[v.getId()].split(" ");
             String idPaziente = singoli_dati[0];

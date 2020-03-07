@@ -22,12 +22,12 @@ public class AccessoDatabase {
     public AccessoDatabase(String prova_url) {
         this.prova_url = prova_url;
         URL = "http://10.0.2.2:9997//se4med_servlet/Se4MedDataRegServlet?action=" + prova_url;
-//        Log.d("url", URL);
+
         GetXMLTask task = new GetXMLTask();
         //task.execute(new String[] { URL });
         try{
             String res = task.execute(new String[] { URL }).get();
-            Log.d("myTag", res);
+
             finale = res;
         }catch (ExecutionException | InterruptedException ei) {
             ei.printStackTrace();

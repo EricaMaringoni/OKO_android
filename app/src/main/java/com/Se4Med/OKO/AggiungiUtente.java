@@ -110,7 +110,7 @@ public class AggiungiUtente extends AppCompatActivity implements View.OnClickLis
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("CLICK","UPLOAD");
+
                 upload_foto();
 
             }
@@ -120,7 +120,6 @@ public class AggiungiUtente extends AppCompatActivity implements View.OnClickLis
             //@Override
             public void onClick(View v) {
 
-                Log.d("CLICK","ADD");
                 add_user();
 
 
@@ -141,7 +140,12 @@ public class AggiungiUtente extends AppCompatActivity implements View.OnClickLis
         String nome = ifNullValue(""+name.getText());
         String cognome = ifNullValue(""+surname.getText());
         String usernam = ifNullValue(""+username.getText());
+
         String birth_place = ifNullValue(""+luogoDiNascita.getText());
+        if (birth_place != ""){
+            birth_place = birth_place.replace(" ","[]");
+        }
+
         String pv = ifNullValue(""+provincia.getText());
         String city = ifNullValue(""+paese.getText());
         String nation = ifNullValue(""+nazione.getText());
@@ -154,7 +158,6 @@ public class AggiungiUtente extends AppCompatActivity implements View.OnClickLis
 
         String password = pref.getString("password",null);
         String data = ifNullValue(""+dataDiNaascita.getText());
-        //Log.d("FOTO=",""+Document_img1);
 
         int i,y;
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
@@ -163,7 +166,7 @@ public class AggiungiUtente extends AppCompatActivity implements View.OnClickLis
             //Verifico username
             p=new AccessoDatabase("verifyusername&username="+usernam);
 
-            if(p.finale.contains("Error")){
+            if(p.finale.contains("error")){
                 alertDialog.setMessage("Username not available");
                 alertDialog.create();
                 alertDialog.show();
@@ -175,7 +178,6 @@ public class AggiungiUtente extends AppCompatActivity implements View.OnClickLis
                         city + "&provincia_pat=" + pv + "&nazione_pat="+ nation +
                         "&diottria_dx_pat=" + d_dx + "&diottria_sx_pat=" + d_sx + "&foto_pat=" + Document_img1;
 
-                Log.d("URL",""+v);
                 //DOC==0
                 if(!nome.equals("") && !cognome.equals("") && !dataDiNaascita.equals("") ){
 
@@ -185,25 +187,24 @@ public class AggiungiUtente extends AppCompatActivity implements View.OnClickLis
                             (nazione.length()==0 ||nazione.length()==3)){
 
                         if(doc.equals("0")) {
-                            Log.d("DOC","0");
                             p = new AccessoDatabase("createpatientuser&idapp="+ "AcuityTest"
                                     +"&namepat=" + nome + "&surnamepat=" + cognome +"&useremail=" + email + "&password="+
                                     password + "&username=" + usernam + "&sessopat=" + sess + "&luogo_di_nascita_pat=" +
                                     birth_place + "&data_di_nascita_pat="+ data +"&numero_telefono_pat=" + num + "&citta_pat=" +
                                     city + "&provincia_pat=" + pv + "&nazione_pat="+ nation +
-                                    "&diottria_dx_pat=" + d_dx + "&diottria_sx_pat=" + d_sx + "&foto_pat=" + Document_img1);
+                                    "&diottria_dx_pat=" + d_dx + "&diottria_sx_pat=" + d_sx + "&foto_pat=" + Document_img1
+                                    + "&save_foto_pat=" + "false");
 
                             //VERIFICA SALVATAGGIO
                         } else {
                             //DOC==1
-                            Log.d("DOC","1");
-                            Log.d("DATA",""+data);
                             p = new AccessoDatabase("createpatdoc&idapp="+ "AcuityTest"
                                     +"&namepat=" + nome + "&surnamepat=" + cognome +"&docemail=" + email + "&password="+
                                     password + "&username=" + usernam + "&sessopat=" + sess + "&luogo_di_nascita_pat=" +
                                     birth_place + "&data_di_nascita_pat="+ data +"&numero_telefono_pat=" + num + "&citta_pat=" +
                                     city + "&provincia_pat=" + pv + "&nazione_pat="+ nation +
-                                    "&diottria_dx_pat=" + d_dx + "&diottria_sx_pat=" + d_sx + "&foto_pat=" + Document_img1);
+                                    "&diottria_dx_pat=" + d_dx + "&diottria_sx_pat=" + d_sx + "&foto_pat=" + Document_img1
+                                    + "&save_foto_pat=" + "false");
 
                         }
 
@@ -266,7 +267,6 @@ public class AggiungiUtente extends AppCompatActivity implements View.OnClickLis
             }
         });
         builder.show();
-        // Log.d("FOTO=",""+Document_img1);
     }
 
     @Override
@@ -368,8 +368,6 @@ public class AggiungiUtente extends AppCompatActivity implements View.OnClickLis
 
         HttpPost httppost = new HttpPost("http://10.0.2.2:9997//se4medservice");
         File file = new File(i_file);
-        Log.d("EDIT USER PROFILE", "UPLOAD: file length = " + file.length());
-        Log.d("EDIT USER PROFILE", "UPLOAD: file exist = " + file.exists());
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         //MultipartEntity mpEntity = new MultipartEntity();
         ContentBody cbFile = new FileBody(file, "image/jpg");

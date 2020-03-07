@@ -204,13 +204,12 @@ public class ProfiloPaziente extends Activity implements View.OnClickListener {
             temp.setText("Nessun test eseguito");
             TableLayout table = (TableLayout) findViewById(R.id.table);
             table.setVisibility(View.INVISIBLE);
-            //Log.d("prova", "nooo");
+
         }else{
             ListaRisultati = ListaRisultati.substring(ListaRisultati.indexOf("{")+1, ListaRisultati.indexOf("}"));
             ListaRisultati = ListaRisultati.replace("[","").replace("]","");
             risultati = ListaRisultati.split((","));
 
-            //Log.d("prova", risultati[0]);
 
             final List<String> result_list = new ArrayList<String>(Arrays.asList(risultati));
 
@@ -248,12 +247,12 @@ public class ProfiloPaziente extends Activity implements View.OnClickListener {
 
 
         listaRisultatiTest =  p.finale;
-        //Log.d("prova", ""+table.getChildCount());
+
         listaRisultatiTest = listaRisultatiTest.substring(listaRisultatiTest.indexOf("{")+1, listaRisultatiTest.indexOf("}"));
         singoloRisultato = listaRisultatiTest.split("/");
 
         table = (TableLayout) findViewById(R.id.table);
-        //Log.d("prova", ""+table.getChildCount());
+
 
         singoloRisultato[0] = singoloRisultato[0].substring(3,singoloRisultato[0].length());
         singoloRisultato[1] = singoloRisultato[1].substring(3,singoloRisultato[1].length());
@@ -268,7 +267,7 @@ public class ProfiloPaziente extends Activity implements View.OnClickListener {
             row_delete = findViewById(i);
 
             if(row_delete != null){
-                Log.d("row_delete",""+i);
+
                 table.removeView(row_delete);
             }
 
@@ -386,7 +385,7 @@ public class ProfiloPaziente extends Activity implements View.OnClickListener {
 
         String additionalInfo = p.finale;
         additionalInfo = additionalInfo.substring(additionalInfo.indexOf("{")+1, additionalInfo.indexOf("}"));
-        Log.d("sonoq", additionalInfo);
+
         String[] infoPatient = additionalInfo.split("-");
         email_text = findViewById(R.id.email);
         password_text = findViewById(R.id.password);
@@ -426,7 +425,6 @@ public class ProfiloPaziente extends Activity implements View.OnClickListener {
     }
 
     public void modificaDati(){
-Log.d("qui","sono qui");
         sesso.setEnabled(true);
         num_tel.setEnabled(true);
         citta.setEnabled(true);

@@ -40,11 +40,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         password = findViewById(R.id.password);
 
         login.setOnClickListener(this);
-/*
-        ImageShape.ImageSet i = stringToImageSet("img");
-        List<ImageShape> l = ImageShape.getShapes(i);
-        Log.d("immagine",""+l.get(0));
-*/
+
     }
 
     @Override
@@ -56,7 +52,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         user = username.getText().toString();
 
 
-        //Log.d("aia", password_hash);
+
         AccessoDatabase p = new AccessoDatabase("authenticate&useremail=" + user +
                 "&password=" + password_hash );
 
@@ -72,7 +68,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             //controllo se è un paziente o un dottore
             p = new AccessoDatabase("authenticateDoctorNameSurname&useremail=" + user +
                     "&password=" + password_hash + "&idapp=" + "AcuityTest" );
-            //Log.d("aia", p.finale.substring(18,26).equals("login_ok"));
+
 
             if(p.finale.contains("login_ok")){
                 //è un dottore, vado alla Pazienti

@@ -178,8 +178,6 @@ public class TestActivity extends Activity implements View.OnClickListener {
                 }
             }
             step = step + 1;
-            Log.d(TAG, "STRINGGG DX: " + stringa_risultati_dx);
-            Log.d(TAG, "STRINGGG SX: " + stringa_risultati_sx);
         } else {
             if(occhio=="dx"){
 
